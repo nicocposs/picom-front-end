@@ -1,0 +1,35 @@
+<style>
+  table,th,td{
+    border: 1px solid black;
+  }
+</style>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Contenu de l'annonce</th>
+    <th>Date de début d'annonce</th>
+    <th>Date de fin d'annonce</th>
+  </thead>
+  <tr *ngFor="let a of annoncesPassees">
+    <td>{{a.id}}</td>
+    <td>{{a.contenu}}</td>
+    <td>{{a.dateHeureDebut}}</td>
+    <td>{{a.dateHeureFin}}</td>
+  </tr>
+</table>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Contenu de l'annonce</th>
+    <th>Date de début d'annonce</th>
+    <th>Date de fin d'annonce</th>
+  </thead>
+  <tr *ngFor="let a of annoncesFutures">
+    <td>{{a.id}}</td>
+    <td>{{a.contenu}}</td>
+    <td>{{a.dateHeureDebut}}</td>
+    <td>{{a.dateHeureFin}}</td>
+  </tr>
+</table>
