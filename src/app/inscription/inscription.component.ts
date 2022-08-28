@@ -45,9 +45,6 @@ export class InscriptionComponent implements OnInit {
     this.erreurconfirmemdp = "";
     this.erreurnum = "";
 
-    if (mdp.value !== confirmeMdp.value) {
-      this.erreurconfirmemdp = "Les deux mots de passe ne correspondent pas"
-    }
       let c: Client = new Client(
         nom.value,
         prenom.value,
@@ -57,16 +54,19 @@ export class InscriptionComponent implements OnInit {
       );
       let response = this.service.ajouterClient(c);
       response.subscribe(
-        (res) => console.log('HTTP response', res),
-        (err) => this.gererErreurs(err),
+        (res) => this.router.navigate(['']),
+        (err) => this.gererErreurs(err,mdp,confirmeMdp),
         () => console.log('HTTP request completed.')
       );
     return false;
   }
 
-  gererErreurs(err: HttpErrorResponse): void {
+  gererErreurs(err: HttpErrorResponse,mdp:HTMLInputElement,confirmeMdp:HTMLInputElement): void {
     for (const [key, value] of Object.entries(err.error)) {
       this.changerErreur(key, value);
+    }
+    if(mdp.value != confirmeMdp.value){
+      this.erreurconfirmemdp = "Les deux mots de passes ne sont pas identiques";
     }
   }
 
