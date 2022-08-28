@@ -1,0 +1,39 @@
+<style>
+  table,th,td{
+    border: 1px solid black;
+  }
+</style>
+
+<h1>Annonces passées</h1>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Début d'annonce</th>
+    <th>Fin d'annonce</th>
+  </thead>
+  <tr *ngFor="let a of annoncesPassees">
+    <td>{{a.id}}</td>
+    <td>{{a.titre}}</td>
+    <td>{{a.dateDebutSimple}}</td>
+    <td>{{a.dateFinSimple}}</td>
+    <td><button (click)="click(a.id)">Ouvrir</button></td>
+  </tr>
+</table>
+
+<h1>Annonces futures</h1>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Début d'annonce</th>
+    <th>Fin d'annonce</th>
+  </thead>
+  <tr *ngFor="let a of annoncesFutures">
+    <td>{{a.id}}</td>
+    <td>{{a.titre}}</td>
+    <td>{{a.dateDebutSimple}}</td>
+    <td>{{a.dateFinSimple}}</td>
+    <td><button (click)="click(a.id)">Ouvrir</button></td>
+  </tr>
+</table>

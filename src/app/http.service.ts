@@ -3,10 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Client } from './inscription/client';
 
+import {Annonce} from 'src/app/annonces/annonce';
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+
 
   constructor(private client:HttpClient) {
 
@@ -18,4 +21,14 @@ export class HttpService {
       utilisateurConnexion(email:string, motDePasse:string): Observable<Object> {
         return this.client.post(`http://localhost:8080/api/utilisateurs/connexion/${email}/${motDePasse}`, null);
       }
+
+  getAnnonces(clientId:number):Observable<Annonce[]>{
+    return this.client.get<Annonce[]>(`http://localhost:8080/api/annonces/${clientId}`);
+  }
+
+  getAnnonce(annonceId:number):Observable<Annonce>{
+    return this.client.get<Annonce>(`http://localhost:8080/api/annonces/annonce/${annonceId}`);
+  }
+
 }
+

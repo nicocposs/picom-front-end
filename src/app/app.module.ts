@@ -4,14 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+
+import { AnnoncesComponent } from './annonces/annonces.component';
+import { DetailAnnonceComponent } from './detail-annonce/detail-annonce.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     InscriptionComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    AnnoncesComponent,
+    DetailAnnonceComponent
   ],
   imports: [
     BrowserModule,
