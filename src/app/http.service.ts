@@ -14,6 +14,11 @@ export class HttpService {
     return this.client.get<Annonce[]>(`http://localhost:8080/api/annonces/${clientId}`);
   }
 
+  getAnnonce(annonceId:number):Observable<Annonce>{
+    return this.client.get<Annonce>(`http://localhost:8080/api/annonces/annonce/${annonceId}`);
+  }
+
+
 
 }
 

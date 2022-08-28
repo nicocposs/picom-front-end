@@ -8,15 +8,16 @@
 <table>
   <thead>
     <th>ID</th>
-    <th>Contenu de l'annonce</th>
-    <th>Date de début d'annonce</th>
-    <th>Date de fin d'annonce</th>
+    <th>Titre</th>
+    <th>Début d'annonce</th>
+    <th>Fin d'annonce</th>
   </thead>
   <tr *ngFor="let a of annoncesPassees">
     <td>{{a.id}}</td>
-    <td>{{a.contenu}}</td>
-    <td>{{a.dateHeureDebut}}</td>
-    <td>{{a.dateHeureFin}}</td>
+    <td>{{a.titre}}</td>
+    <td>{{a.dateDebutSimple}}</td>
+    <td>{{a.dateFinSimple}}</td>
+    <td><button (click)="click(a.id)">Ouvrir</button></td>
   </tr>
 </table>
 
@@ -24,14 +25,15 @@
 <table>
   <thead>
     <th>ID</th>
-    <th>Contenu de l'annonce</th>
-    <th>Date de début d'annonce</th>
-    <th>Date de fin d'annonce</th>
+    <th>Titre</th>
+    <th>Début d'annonce</th>
+    <th>Fin d'annonce</th>
   </thead>
   <tr *ngFor="let a of annoncesFutures">
     <td>{{a.id}}</td>
-    <td>{{a.contenu}}</td>
-    <td>{{a.dateHeureDebut}}</td>
-    <td>{{a.dateHeureFin}}</td>
+    <td>{{a.titre}}</td>
+    <td>{{a.dateDebutSimple}}</td>
+    <td>{{a.dateFinSimple}}</td>
+    <td><button (click)="click(a.id)">Ouvrir</button></td>
   </tr>
 </table>

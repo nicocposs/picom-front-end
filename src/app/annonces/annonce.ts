@@ -1,12 +1,15 @@
 export class Annonce {
-  contenu:string;
+  contenu:string = "";
   id: number;
-  dateHeureDebut:Date = new Date();
-  dateHeureFin:Date = new Date();
+  dateHeureDebut:Date;
+  dateHeureFin:Date;
+  titre:string;
+  dateDebutSimple:string = "";
+  dateFinSimple:string = "";
 
-  constructor(id: number,contenu:string, dateHeureDebut:Date,dateHeureFin:Date){
+  constructor(id: number,titre:string, dateHeureDebut:Date,dateHeureFin:Date){
     this.id = id;
-    this.contenu = contenu;
+    this.titre = titre;
     this.dateHeureDebut = dateHeureDebut;
     this.dateHeureFin = dateHeureFin;
   }
