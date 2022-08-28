@@ -1,0 +1,41 @@
+<div>
+
+<form>
+<label for="nom">Nom : </label>
+<input type="text" name="nom" id="nom" #nom>
+<br>
+<span class="erreur" id="nomerreur" *ngIf="erreurnom">{{erreurnom}}</span>
+<br>
+<label for="prenom">Prénom : </label>
+<input type="text" name="prenom" id="prenom" #prenom>
+<br>
+<span class="erreur" id="prenomerreur" *ngIf="erreurprenom">{{erreurprenom}}</span>
+<br>
+<label for="email">Email : </label>
+<input type="text" name="email" id="email" #email>
+<br>
+<span class="erreur" id="emailerreur" *ngIf="erreuremail">{{erreuremail}}</span>
+<br>
+<label for="mdp">Mot de passe : </label>
+<input type="password" name="mdp" id="mdp" #mdp>
+<br>
+<span class="erreur" id="mdpereur"*ngIf="erreurmdp">{{erreurmdp}}</span>
+<br>
+<label for="confirmMdp">Confirmez le mot de passe : </label>
+<input type="password" name="confirmeMdp" id="confirmeMdp" #confirmeMdp>
+<br>
+<span class="erreur" id="confirmemdperreur" *ngIf="erreurconfirmemdp">{{erreurconfirmemdp}}</span>
+<br>
+<label for="num">Numéro de téléphone : </label>
+<input type="text" name="num" id="num" #num>
+<br>
+<span class="erreur" id="numerreur"*ngIf="erreurnum">{{erreurnum}}</span>
+<br>
+<button (click)="verification(nom, prenom, email, mdp, confirmeMdp, num)">S'inscrire</button>
+
+</form>
+
+<button>Retour à la connexion</button>
+
+</div>
+
