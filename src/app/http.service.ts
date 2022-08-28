@@ -14,4 +14,8 @@ export class HttpService {
       ajouterClient(c: Client): Observable<Object> {
         return this.client.post(`http://localhost:8080/api/utilisateurs`, c);
    }
+
+      utilisateurConnexion(email:string, motDePasse:string): Observable<Object> {
+        return this.client.post(`http://localhost:8080/api/utilisateurs/connexion/${email}/${motDePasse}`, null);
+      }
 }
