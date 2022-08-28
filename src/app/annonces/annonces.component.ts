@@ -2,6 +2,7 @@ import { getLocaleTimeFormat } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../http.service';
+import { UserService } from '../user.service';
 import { Annonce } from './annonce';
 
 @Component({
@@ -11,13 +12,17 @@ import { Annonce } from './annonce';
 })
 export class AnnoncesComponent implements OnInit {
 
-  @Input() clientId:number = 1;
+  @Input() clientId?:number = 0;
   annoncesPassees:Annonce[] = [];
   annoncesFutures:Annonce[] = [];
 
-  constructor(private service:HttpService,private router: Router) { }
+  constructor(private service:HttpService,private router: Router, private user:UserService) { }
 
   ngOnInit(): void {
+    if(this.user.getUser() == null){
+      this.router.navigate(['']);
+    }
+    this.clientId = this.user.getUser()?.id;
     this.getAnnonces();
 
   }
@@ -51,6 +56,11 @@ export class AnnoncesComponent implements OnInit {
 
   click(id:number){
     this.router.navigate(['annonce',id]);
+  }
+
+  deconnexion(){
+    this.user.setUser(undefined);
+    this.router.navigate(['']);
   }
 
 }

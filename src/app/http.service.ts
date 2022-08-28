@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Client } from './inscription/client';
 
-import {Annonce} from 'src/app/annonces/annonce';
+import { Annonce } from 'src/app/annonces/annonce';
 
 @Injectable({
   providedIn: 'root'
@@ -11,22 +11,23 @@ import {Annonce} from 'src/app/annonces/annonce';
 export class HttpService {
 
 
-  constructor(private client:HttpClient) {
+  constructor(private client: HttpClient) {
 
   }
-      ajouterClient(c: Client): Observable<Object> {
-        return this.client.post(`http://localhost:8080/api/utilisateurs`, c);
-   }
 
-      utilisateurConnexion(email:string, motDePasse:string): Observable<Object> {
-        return this.client.post(`http://localhost:8080/api/utilisateurs/connexion/${email}/${motDePasse}`, null);
-      }
+  ajouterClient(c: Client): Observable<Object> {
+    return this.client.post(`http://localhost:8080/api/utilisateurs`, c);
+  }
 
-  getAnnonces(clientId:number):Observable<Annonce[]>{
+  utilisateurConnexion(email: string, motDePasse: string): Observable<Object> {
+    return this.client.post(`http://localhost:8080/api/utilisateurs/connexion/${email}/${motDePasse}`, null);
+  }
+
+  getAnnonces(clientId?: number): Observable<Annonce[]> {
     return this.client.get<Annonce[]>(`http://localhost:8080/api/annonces/${clientId}`);
   }
 
-  getAnnonce(annonceId:number):Observable<Annonce>{
+  getAnnonce(annonceId: number): Observable<Annonce> {
     return this.client.get<Annonce>(`http://localhost:8080/api/annonces/annonce/${annonceId}`);
   }
 

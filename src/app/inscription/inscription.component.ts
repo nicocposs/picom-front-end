@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
+import { UserService } from '../user.service';
 import { Client } from './client';
 
 @Component({
@@ -16,9 +18,17 @@ export class InscriptionComponent implements OnInit {
   erreurconfirmemdp: string = '';
   erreurnum: string = '';
 
-  constructor(private service: HttpService) {}
+  constructor(private service: HttpService, private router:Router, private user: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.user.getUser() != null){
+      this.router.navigate(['annonces']);
+    }else if(this.user.getUser() != null){
+      //TODO rediriger vers tarifs
+      this.router.navigate(['annonces']);
+    }
+
+  }
 
   verification(
     nom: HTMLInputElement,
@@ -78,6 +88,11 @@ export class InscriptionComponent implements OnInit {
         this.erreurnum = v;
         break;
     }
-}
+
+
+  }
+  redirectionConnexion(){
+    this.router.navigate(['connexion']);
+  }
 
 }

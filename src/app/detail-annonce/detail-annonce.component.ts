@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Annonce } from '../annonces/annonce';
 import { HttpService } from '../http.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-detail-annonce',
@@ -13,9 +14,12 @@ export class DetailAnnonceComponent implements OnInit {
   idAnnonce:number = 0;
   annonce:Annonce = new Annonce(0,"",new Date(),new Date());
 
-  constructor(private service:HttpService,private router: Router,private route: ActivatedRoute) { }
+  constructor(private service:HttpService,private router: Router,private route: ActivatedRoute,private user: UserService) { }
 
   ngOnInit(): void {
+    if(this.user.getUser() == null){
+      this.router.navigate(['']);
+    }
     let strVal = this.route.snapshot.paramMap.get('id');
     if(strVal != null){
       this.idAnnonce = +strVal;
@@ -26,11 +30,11 @@ export class DetailAnnonceComponent implements OnInit {
 
   getAnnonce(idAnnonce:number){
     this.service.getAnnonce(idAnnonce).subscribe(a => this.annonce = a,
-      () => this.router.navigate([''])
+      () => this.router.navigate(['annonces'])
       );
   }
 
   retour(){
-    this.router.navigate(['']);
+    this.router.navigate(['annonces']);
   }
 }
