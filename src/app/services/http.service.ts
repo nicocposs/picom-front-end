@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Client } from './inscription/client';
+import { Client } from '../business/client';
 
-import { Annonce } from 'src/app/annonces/annonce';
+import { Annonce } from 'src/app/business/annonce';
 
 @Injectable({
   providedIn: 'root'

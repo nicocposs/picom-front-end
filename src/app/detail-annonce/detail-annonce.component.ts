@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Annonce } from '../annonces/annonce';
-import { HttpService } from '../http.service';
-import { UserService } from '../user.service';
+import { Annonce } from '../business/annonce';
+import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-detail-annonce',

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { DetailAnnonceComponent } from './detail-annonce/detail-annonce.component';
+import {AjouterAnnonceComponent} from './ajouter-annonce/ajouter-annonce.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:'inscription',component:InscriptionComponent},
   {path:'annonces',component: AnnoncesComponent},
   {path:'annonce/:id',  component:DetailAnnonceComponent},
+  {path:'ajoutannonce', component:AjouterAnnonceComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Utilisateur } from '../business/utilisateur';
-import { HttpService } from '../http.service';
-import { UserService } from '../user.service';
+import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-connexion',

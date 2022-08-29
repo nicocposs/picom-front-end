@@ -1,9 +1,8 @@
-import { getLocaleTimeFormat } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HttpService } from '../http.service';
-import { UserService } from '../user.service';
-import { Annonce } from './annonce';
+import { Router } from '@angular/router';
+import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
+import { Annonce } from '../business/annonce';
 
 @Component({
   selector: 'app-annonces',
@@ -61,6 +60,10 @@ export class AnnoncesComponent implements OnInit {
   deconnexion(){
     this.user.setUser(undefined);
     this.router.navigate(['']);
+  }
+
+  redirectionAjout(){
+    this.router.navigate(['ajoutannonce']);
   }
 
 }

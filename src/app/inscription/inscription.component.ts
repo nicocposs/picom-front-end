@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '../http.service';
-import { UserService } from '../user.service';
-import { Client } from './client';
+import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
+import { Client } from '../business/client';
 
 @Component({
   selector: 'app-inscription',
@@ -54,8 +54,8 @@ export class InscriptionComponent implements OnInit {
       );
       let response = this.service.ajouterClient(c);
       response.subscribe(
-        (res) => this.router.navigate(['']),
-        (err) => this.gererErreurs(err,mdp,confirmeMdp),
+        () => this.router.navigate(['']),
+        (err: HttpErrorResponse) => this.gererErreurs(err,mdp,confirmeMdp),
         () => console.log('HTTP request completed.')
       );
     return false;

@@ -10,6 +10,9 @@ import { ConnexionComponent } from './connexion/connexion.component';
 
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { DetailAnnonceComponent } from './detail-annonce/detail-annonce.component';
+import { AjouterAnnonceComponent } from './ajouter-annonce/ajouter-annonce.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { DetailAnnonceComponent } from './detail-annonce/detail-annonce.componen
     InscriptionComponent,
     ConnexionComponent,
     AnnoncesComponent,
-    DetailAnnonceComponent
+    DetailAnnonceComponent,
+    AjouterAnnonceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularEditorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

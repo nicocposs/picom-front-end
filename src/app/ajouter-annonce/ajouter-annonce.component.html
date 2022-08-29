@@ -1,0 +1,71 @@
+
+<div>
+  <form #formAnnonce="ngForm" (ngSubmit)="verification(formAnnonce)">
+
+
+
+    <label for="titre">Titre : </label>
+    <input type="text" [(ngModel)]="titre" name="titre" id="titre">
+    <br>
+    <span class="erreur" id="titreerreur" *ngIf="erreurtitre">{{erreurtitre}}</span>
+    <br>
+    <label for="annonce">Créez votre annonce : </label>
+    <angular-editor [(ngModel)]="htmlContent" name="htmlContent" [config]="editorConfig"></angular-editor>
+    <br>
+    <span class="erreur" id="annonceerreur" *ngIf="erreurannonce">{{erreurannonce }}</span>
+    <br>
+    <label for="zones">Zone(s) : </label>
+    <select name="zones" [(ngModel)]="zonesSaved" multiple>
+      <option *ngFor="let zone of zones" [value]="zone.id">{{zone.nom}}</option>
+    </select>
+    <br>
+    <span class="erreur" id="zoneserreur" *ngIf="erreurzones">{{erreurzones}}</span>
+    <br>
+    <label for="trancheshoraire">Tranche(s) horaire(s): </label>
+    <select name="trancheshoraire" [(ngModel)]="trancheshoraireSaved" multiple>
+      <option *ngFor="let tranche of trancheshoraire" [value]="tranche.id">{{tranche.debut}}h</option>
+    </select>
+    <br>
+    <span class="erreur" id="trancheshoraireerreur"*ngIf="erreurtrancheshoraire">{{erreurtrancheshoraire}}</span>
+    <br>
+    <label for="datedebut">Date de début : </label>
+    <input type="date" [ngModel]="datedebut" name="datedebut" id="datedebut">
+    <br>
+    <span class="erreur" id="datedebuterreur" *ngIf="erreurdatedebut">{{erreurdatedebut}}</span>
+    <br>
+    <label for="datefin">Numéro de téléphone : </label>
+    <input type="date" [ngModel]="datefin" name="datefin" id="datefin">
+    <br>
+    <span class="erreur" id="datefinerreur"*ngIf="erreurdatefin">{{erreurdatefin}}</span>
+    <br>
+    <label for="carte">Numéro de carte : </label>
+    <input type="text" [(ngModel)]="carte" name="carte" id="carte">
+    <br>
+    <span class="erreur" id="carteerreur" *ngIf="erreurcarte">{{erreurcarte}}</span>
+    <br>
+    <label for="mois">Date d'expiration : </label>
+    <input type="text" [(ngModel)]="expiration" name="expiration" id="expiration">
+    <br>
+    <span class="erreur" id="expirationerreur" *ngIf="erreurexpiration">{{erreurexpiration}}</span>
+    <br>
+    <label for="code">Code de sécurité : </label>
+    <input type="text" [(ngModel)]="code" name="code" id="code">
+    <br>
+    <span class="erreur" id="codeerreur" *ngIf="erreurcode">{{erreurcode}}</span>
+    <br>
+    <span>Tarif :</span> {{tarif}}€
+    <br>
+
+  <input type="submit" value="Payer"/>
+
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
