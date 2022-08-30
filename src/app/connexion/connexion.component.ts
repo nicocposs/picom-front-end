@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+  imageSrc = 'assets/logo.png';
 
   constructor(private service: HttpService, private user:UserService, private router:Router) { }
 
@@ -40,7 +41,7 @@ export class ConnexionComponent implements OnInit {
         this.router.navigate(['annonces']);
       }
     },
-      error: ()=>alert("Identifiants invalide")}
+      error: ()=>alert("Identifiants invalides")}
       );
 
     return false;

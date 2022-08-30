@@ -48,8 +48,9 @@
   height:100px;
   width:100%;
   background-color:#91c7b1;
-  padding-left:150px;
-  padding-right:150px;
+  padding-left:0px;
+  padding-right:300px;
+  align-items: center;
   text-align:center;
   color:white;
   font-size:40px;
@@ -90,4 +91,8 @@ input{
 
 .text{
   text-align:right;
+}
+
+.text-haut{
+  font-size:40px;
 }
