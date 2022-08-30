@@ -58,7 +58,7 @@ export class AnnoncesComponent implements OnInit {
   }
 
   deconnexion(){
-    this.user.setUser(undefined);
+    this.user.deconnexion();
     this.router.navigate(['']);
   }
 

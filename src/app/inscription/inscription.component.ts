@@ -23,9 +23,6 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
     if(this.user.getUser() != null){
       this.router.navigate(['annonces']);
-    }else if(this.user.getUser() != null){
-      //TODO rediriger vers tarifs
-      this.router.navigate(['annonces']);
     }
 
   }
@@ -38,36 +35,41 @@ export class InscriptionComponent implements OnInit {
     confirmeMdp: HTMLInputElement,
     num: HTMLInputElement
   ): boolean {
+
     this.erreurnom = "";
     this.erreurprenom = "";
     this.erreuremail = "";
     this.erreurmdp = "";
     this.erreurconfirmemdp = "";
     this.erreurnum = "";
-
-      let c: Client = new Client(
-        nom.value,
-        prenom.value,
-        email.value,
-        mdp.value,
-        num.value
-      );
-      let response = this.service.ajouterClient(c);
-      response.subscribe(
-        () => this.router.navigate(['']),
-        (err: HttpErrorResponse) => this.gererErreurs(err,mdp,confirmeMdp),
-        () => console.log('HTTP request completed.')
-      );
-    return false;
-  }
-
-  gererErreurs(err: HttpErrorResponse,mdp:HTMLInputElement,confirmeMdp:HTMLInputElement): void {
-    for (const [key, value] of Object.entries(err.error)) {
-      this.changerErreur(key, value);
-    }
     if(mdp.value != confirmeMdp.value){
       this.erreurconfirmemdp = "Les deux mots de passes ne sont pas identiques";
     }
+    else{
+
+
+        let c: Client = new Client(
+          nom.value,
+          prenom.value,
+          email.value,
+          mdp.value,
+          num.value
+        );
+        let response = this.service.ajouterClient(c);
+        response.subscribe({
+          next: () => this.router.navigate(['']),
+          error : (err: HttpErrorResponse) => this.gererErreurs(err)
+      });
+    }
+    return false;
+
+  }
+
+  gererErreurs(err: HttpErrorResponse): void {
+    for (const [key, value] of Object.entries(err.error)) {
+      this.changerErreur(key, value);
+    }
+
   }
 
   changerErreur(k: string, v: any) {

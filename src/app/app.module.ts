@@ -13,6 +13,8 @@ import { DetailAnnonceComponent } from './detail-annonce/detail-annonce.componen
 import { AjouterAnnonceComponent } from './ajouter-annonce/ajouter-annonce.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     AngularEditorModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

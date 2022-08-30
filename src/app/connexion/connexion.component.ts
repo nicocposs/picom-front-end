@@ -14,16 +14,14 @@ export class ConnexionComponent implements OnInit {
   constructor(private service: HttpService, private user:UserService, private router:Router) { }
 
   ngOnInit(): void {
-    if(this.user.getUser() != null && this.user.getUser()?.role == 'client'){
-      this.router.navigate(['annonces']);
-    }else if(this.user.getUser() != null && this.user.getUser()?.role == 'admin'){
-      //TODO rediriger vers tarifs
+    if(this.user.getUser() != null){
       this.router.navigate(['annonces']);
     }
   }
 
   connexion(email:HTMLInputElement, mdp:HTMLInputElement): boolean {
-    this.service.utilisateurConnexion(email.value, mdp.value).subscribe(u=>{
+    this.service.utilisateurConnexion(email.value, mdp.value).subscribe({
+      next: (u)=>{
       let id;
       let mail;
       let role;
@@ -42,7 +40,8 @@ export class ConnexionComponent implements OnInit {
         this.router.navigate(['annonces']);
       }
     },
-      ()=>alert("Identifiants invalide"))
+      error: ()=>alert("Identifiants invalide")}
+      );
 
     return false;
   }

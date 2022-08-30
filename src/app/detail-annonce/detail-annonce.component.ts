@@ -29,9 +29,10 @@ export class DetailAnnonceComponent implements OnInit {
   }
 
   getAnnonce(idAnnonce:number){
-    this.service.getAnnonce(idAnnonce).subscribe(a => this.annonce = a,
-      () => this.router.navigate(['annonces'])
-      );
+    this.service.getAnnonce(idAnnonce).subscribe({
+      next: a => this.annonce = a,
+      error: () => this.router.navigate(['annonces'])
+    });
   }
 
   retour(){

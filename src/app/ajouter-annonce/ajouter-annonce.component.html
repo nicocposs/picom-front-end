@@ -15,14 +15,14 @@
     <span class="erreur" id="annonceerreur" *ngIf="erreurannonce">{{erreurannonce }}</span>
     <br>
     <label for="zones">Zone(s) : </label>
-    <select name="zones" [(ngModel)]="zonesSaved" multiple>
+    <select name="zonesSaved" [(ngModel)]="zonesSaved" multiple>
       <option *ngFor="let zone of zones" [value]="zone.id">{{zone.nom}}</option>
     </select>
     <br>
     <span class="erreur" id="zoneserreur" *ngIf="erreurzones">{{erreurzones}}</span>
     <br>
     <label for="trancheshoraire">Tranche(s) horaire(s): </label>
-    <select name="trancheshoraire" [(ngModel)]="trancheshoraireSaved" multiple>
+    <select name="trancheshoraireSaved" [(ngModel)]="trancheshoraireSaved" multiple>
       <option *ngFor="let tranche of trancheshoraire" [value]="tranche.id">{{tranche.debut}}h</option>
     </select>
     <br>
@@ -33,7 +33,7 @@
     <br>
     <span class="erreur" id="datedebuterreur" *ngIf="erreurdatedebut">{{erreurdatedebut}}</span>
     <br>
-    <label for="datefin">Numéro de téléphone : </label>
+    <label for="datefin">Date de fin : </label>
     <input type="date" [ngModel]="datefin" name="datefin" id="datefin">
     <br>
     <span class="erreur" id="datefinerreur"*ngIf="erreurdatefin">{{erreurdatefin}}</span>
@@ -44,9 +44,17 @@
     <span class="erreur" id="carteerreur" *ngIf="erreurcarte">{{erreurcarte}}</span>
     <br>
     <label for="mois">Date d'expiration : </label>
-    <input type="text" [(ngModel)]="expiration" name="expiration" id="expiration">
+    <select [(ngModel)]="moisexpiration" name="moisexpiration" id="moisexpiration">
+      <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{i}}">{{i}}</option>
+    </select>
+
+    /
+    <select [(ngModel)]="anneeexpiration" name="anneeexpiration" id="anneeexpiration">
+      <option *ngFor="let a of anneesValides" value="{{a}}">{{a}}</option>
+    </select>
     <br>
-    <span class="erreur" id="expirationerreur" *ngIf="erreurexpiration">{{erreurexpiration}}</span>
+    <span class="erreur" id="moisexpirationerreur" *ngIf="erreurmoisexpiration">{{erreurmoisexpiration}}</span>
+    <br>
     <br>
     <label for="code">Code de sécurité : </label>
     <input type="text" [(ngModel)]="code" name="code" id="code">
